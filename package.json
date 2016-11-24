@@ -13,7 +13,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel app.js -o app.es6.js"
+    "build": "babel src -d dist"
   },
   "repository": {
     "type": "git",
