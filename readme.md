@@ -13,6 +13,10 @@ This is part of FrontCamp Mentoring Program (FrontCamp10.2016).
 Install dependencies:
 > npm install
 
-### Deployment ###
+### Building ###
 Run build:
 > npm run build
+
+### Deployment ###
+Run build:
+> npm run start
