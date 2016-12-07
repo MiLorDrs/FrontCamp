@@ -1,20 +1,19 @@
 'use strict';
 
-import NewsController from './news.controller';
-
-// [pattern] MVC: Controller
+// [pattern] MVC: View
 export default class NewsView {
-    setListeners() {
-        document.getElementById("bbcNews").addEventListener("click", function (e) {
-            NewsController.getInstance().loadNews("bbc-news");
+    setListeners(eventObserver) {
+        document.getElementById("bbcNews").addEventListener("click", () => {
+            eventObserver.publish("loadNews", "bbc-news");
         }, false);
-        document.getElementById("googleNews").addEventListener("click", function (e) {
-            NewsController.getInstance().loadNews("google-news");
+        document.getElementById("googleNews").addEventListener("click", () => {
+            eventObserver.publish("loadNews", "google-news");
         }, false);
-        document.getElementById("mtvNews").addEventListener("click", function (e) {
-            NewsController.getInstance().loadNews("mtv-news");
+        document.getElementById("mtvNews").addEventListener("click", () => {
+            eventObserver.publish("loadNews", "mtv-news");
         }, false);
     }
+
     renderHtml(news) {
         let content = document.getElementById("content");
         content.innerHTML = "";
