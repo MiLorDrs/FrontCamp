@@ -12,7 +12,7 @@ module.exports = {
 	watchOptions: {
 		aggregateTimeout: 100
 	},
-	devtool: NODE_ENV == 'development' ? 'cheap-module-source-map' : null,
+	devtool: NODE_ENV == 'development' ? 'source-map' : null,
 	plugins: [
 		new webpack.DefinePlugin({
 			NODE_ENV: JSON.stringify(NODE_ENV)

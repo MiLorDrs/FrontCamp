@@ -1,11 +1,19 @@
 #content {
-  width: 1334px;
+  width: 1274px;
   margin: 0 auto;
   padding-top: 20px;
   border: 1px solid #eee;
   border-radius: 4px;
   background: #fefefe;
-
+  &.background {
+    background: repeating-linear-gradient(
+                    45deg,
+                    #606dbc,
+                    #606dbc 10px,
+                    #465298 10px,
+                    #465298 20px
+    );
+  }
   article {
     display: inline-block;
     width: 380px;
@@ -48,12 +56,12 @@
 
 @media screen and (min-width: 950px) and (max-width: 1400px) {
   #content {
-    width: 888px;
+    width: 848px;
   }
 }
 
 @media screen and (max-width: 950px) {
   #content {
-    width: 442px;
+    width: 422px;
   }
 }
