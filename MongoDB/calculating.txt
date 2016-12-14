@@ -1,0 +1,21 @@
+use grades
+db.grades.aggregate([
+   {$unwind:"$scores"},
+   {$match: {"scores.type": {$ne: "quiz"}}},
+   {$group: {
+       _id: {"students":"$student_id","class":"$class_id"},
+       scoresAvg: {$avg: "$scores.score"}
+   }},
+   {$group: {
+        _id: "$_id.class",
+        classScoresAvg: {$avg: "$scoresAvg"}
+   }},
+   {$group: {
+        _id: null,
+        maxScore: {$max: "$classScoresAvg"}
+   }},
+   {$project: {
+        _id: 0,
+        "Class Scores Max": "$maxScore"
+   }}
+])

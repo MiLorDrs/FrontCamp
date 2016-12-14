@@ -1,0 +1,64 @@
+//server
+mongod --dbpath ./db
+
+//import
+mongoimport --db grades --collection grades   --file grades.json
+mongoimport --db posts  --collection authors  --file authors.json
+mongoimport --db posts  --collection articles --file articles.json
+mongoimport --db posts  --collection comments --file comments.json
+mongoimport --db posts  --collection tags     --file tags.json
+
+//dump
+mongodump --archive=posts.gz --gzip --db posts
+
+mongo --host localhost --port 27017
+>>use posts
+
+//indexes
+db.articles.createIndex({title:1})
+db.authors.createIndex({name:1})
+db.comments.createIndex({name:1})
+db.tags.createIndex({tags: 1})
+
+//find all english news (cRud)
+db.articles.find({lang:"en"})
+//add new author (Crud)
+db.authors.insert({name: "John 2th", familyName: "Smith", age: 18, country: "USA"})
+//update comment (crUd)
+db.comments.update({name: "John"}, {$set: {name: "John 2th"}})
+//delete tag (cruD)
+db.tags.remove({tags: {$size: 1}})
+
+
+
+//task 4
+db.grades.aggregate([
+   {$unwind:"$scores"},
+   {$match: {"scores.type": {$ne: "quiz"}}},
+   {$group: {
+       _id: {"students":"$student_id","class":"$class_id"},
+       scoresAvg: {$avg: "$scores.score"}
+   }},
+   {$group: {
+        _id: "$_id.class",
+        classScoresAvg: {$avg: "$scoresAvg"}
+   }},
+   {$group: {
+        _id: null,
+        maxScore: {$max: "$classScoresAvg"}
+   }},
+   {$project: {
+        _id: 0,
+        "Class Scores Max": "$maxScore"
+   }}
+])
+
+/replication
+mongod --port 27017 --dbpath 1 --replSet rs0
+mongod --port 27018 --dbpath 2 --replSet rs0
+mongod --port 27019 --dbpath 3 --replSet rs0
+
+rs.initiate();
+rs.conf()
+rs.add("EPBYGOMW0326:27018")
+rs.add("EPBYGOMW0326:27019")

@@ -1,0 +1,5 @@
+{"name": "John", "date": {"$date": "2016-11-11T10:00:00+03:00"}, "text": "Great news"}
+{"name": "Kate", "date": {"$date": "2016-10-11T10:00:00+03:00"}, "text": "Sad story"}
+{"name": "Jack", "date": {"$date": "2016-09-11T10:00:00+03:00"}, "text": "XDD"}
+{"name": "Emma", "date": {"$date": "2016-08-11T10:00:00+03:00"}, "text": "Hello"}
+{"name": "Michael", "date": {"$date": "2016-07-11T10:00:00+03:00"}, "text": "WOW"}
