@@ -1,0 +1,34 @@
+extends layout
+block content
+    aside
+        h1.user-name Hello, #{username}!
+        a.logout(href='/auth/logout')
+            button Logout
+        form.adding-form(action="/process/add" method="post")
+            h4 Add News:
+            span Title:
+            input(type="text" name="title")
+            br
+            span Description:
+            input(type="text" name="description")
+            br
+            span Author:
+            input(type="text" name="author")
+            br
+            span Image url:
+            input(type="text" name="img")
+            br
+            button(type="submit") Add News
+    main(id="content")
+        each article in articles
+            article
+                div.block-header
+                    h3.title= article.title
+                    span by#{' '}
+                    span.author= article.author
+                div.block-content
+                    h4.description= article.text
+                    img.image(src=article.img)
+                    form.delete-form(action="/process/del" method="post" onsubmit="return confirm('Do you really want to delete this news?')")
+                        input(type="hidden" name="id" value=article.id)
+                        button(type="submit") Delete

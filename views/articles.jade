@@ -1,0 +1,17 @@
+extends layout
+block content
+    aside
+        a(href='/login')
+            button Login
+        a(href='/register')
+            button Register
+    main(id="content")
+        each article in articles
+            article
+                div.block-header
+                    h3.title= article.title
+                    span by#{' '}
+                    span.author= article.author
+                div.block-content
+                    h4.description= article.text
+                    img.image(src=article.img)

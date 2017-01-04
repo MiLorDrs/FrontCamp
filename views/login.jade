@@ -1,0 +1,12 @@
+extends layout
+block content
+    form.auth(action='/auth/login' method='post')
+        h4 Login to your account
+        br
+        span Username:
+        input(type='text' name='username')
+        br
+        span Password:
+        input(type='password' name='password')
+        br
+        button(type='Login') Login

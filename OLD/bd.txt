@@ -1,0 +1,3 @@
+{"title": "News about Sport", "author": "John", "text": "wow, such news, great news, wow, many Sport", "img": "http://sport.img.com.ua/nxs219/b/630x283/8/98/866a486b61dcf25aafcc6e71a8b64988.jpg"}
+{"title": "News about Politic", "author": "james1", "text": "wow, such news, great news, wow, many Politic", "img": "http://ichef-1.bbci.co.uk/news/ws/660/amz/worldservice/live/assets/images/2015/12/08/151208124928_trump_624x351_reuters_nocredit.jpg"}
+{"title": "News about Art", "author": "james2", "text": "wow, such news, great news, wow, many Art", "img": "http://roxolana.net/wp-content/uploads/2015/10/4212_603x354.jpeg"}
