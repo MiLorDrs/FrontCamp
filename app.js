@@ -15,8 +15,9 @@ let auth = require('./routes/auth');
 let app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jsx');
+app.engine('jsx', require('express-react-views').createEngine());
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressSession({
     secret: 'SECRET_KEY'
 }));
+
 // Passport:
 app.use(passport.initialize());
 app.use(passport.session());
@@ -43,6 +45,17 @@ app.use('/', index);
 app.use('/process', process);
 app.use('/auth', auth);
 
+app.get('/', (req, res, next) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+app.get('/user-view', (req, res, next) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.get('/login', (req, res, next) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
     let err = new Error('Not Found');
@@ -55,10 +68,9 @@ app.use((err, req, res, next) => {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
-
     // render the error page
     res.status(err.status || 500);
-    res.render('error');
+    res.json({error: res.locals.message});
 });
 
 passportProcess();

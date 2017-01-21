@@ -35,4 +35,15 @@ router.post('/del', (req, res, next) => {
 
 });
 
+router.get('/articles', (req, res, next) => {
+    NewsModel.find((err, articles) => {
+        if (!err) {
+            res.json(articles);
+        } else {
+            res.statusCode = 500;
+            return res.send({error: 'Server error'});
+        }
+    });
+});
+
 module.exports = router;
