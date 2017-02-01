@@ -9,8 +9,11 @@ button {
     background-color: #f5f5f5;
     background-image: linear-gradient(to bottom, #fff, #e6e6e6);
     background-repeat: repeat-x;
-    &:hover, &[disabled] {
+    &:hover {
         background: #e6e6e6;
+    }
+    &[disabled] {
+        background: #ccc;
     }
 }
 
