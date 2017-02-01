@@ -4,7 +4,7 @@ const NODE_ENV = process.env.NODE_ENV || 'development';
 const webpack = require("webpack");
 
 module.exports = {
-    entry: ['babel-polyfill', 'whatwg-fetch', './index.js'],
+    entry: ['babel-polyfill', 'whatwg-fetch', './src/javascript/index.js'],
     output: {
         filename: "public/app.js"
     },
@@ -44,6 +44,9 @@ module.exports = {
         }, {
             test: /\.png$/,
             loader: 'url?limit=10000'
+        }, {
+            test: /\.html$/,
+            loader: 'raw'
         }]
     },
 

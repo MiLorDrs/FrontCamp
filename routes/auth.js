@@ -13,7 +13,7 @@ router.post('/login', (req, res, next) => {
                 ? req.logIn(user, (err) => {
                 return err
                     ? next(err)
-                    : res.redirect('/user-view');
+                    : res.redirect('/admin');
             })
                 : res.redirect('/');
         }
@@ -29,7 +29,7 @@ router.post('/register', (req, res, next) => {
             : req.logIn(user, (err) => {
             return err
                 ? next(err)
-                : res.redirect('/user-view');
+                : res.redirect('/admin');
         });
     });
 });

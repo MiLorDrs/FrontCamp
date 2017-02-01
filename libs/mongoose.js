@@ -12,7 +12,7 @@ let News = new Schema({
     },
     author: {
         type: String,
-        required: true
+        required: false
     },
     text: {
         type: String,
@@ -20,7 +20,7 @@ let News = new Schema({
     },
     img: {
         type: String,
-        required: true
+        required: false
     }
 });
 

@@ -1,0 +1,25 @@
+<p class="navigation">
+    <button class="btn btn-default"
+            ng-click="$ctrl.index = $ctrl.index- 2"
+            ng-disabled="$ctrl.index == 0">
+        Prev
+    </button>
+    <button class="btn btn-default"
+            ng-click="$ctrl.index = $ctrl.index + 2"
+            ng-disabled="$ctrl.index >= $ctrl.articles.length-2">
+        Next
+    </button>
+</p>
+<article ng-repeat="article in $ctrl.articles | limitTo:2:$ctrl.index">
+    <div class="block-header">
+        <h3 class="title">{{article.title}}</h3>
+        <span>by </span>
+        <span class="author">{{article.author}}</span>
+    </div>
+    <div class="block-content">
+        <h4 class="description">{{article.text}}</h4>
+        <img class="image" ng-src="{{article.img}}"/>
+    </div>
+    <button type="button" ng-if="$ctrl.type === 'admin'" ui-sref="admin.edit({id: article._id})">Edit</button>
+    <button type="button" ng-if="$ctrl.type === 'admin'" ng-click="$ctrl.deleteArticle(article._id)">Delete</button>
+</article>

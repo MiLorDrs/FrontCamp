@@ -1,0 +1,24 @@
+<form action="/api/articles" method="post" class="adding-form center" name="addingForm">
+    <h4>Add News:</h4>
+    <label>
+        <span>Title:</span>
+        <input type="text" name="title" ng-required="true" ng-model="$ctrl.article.title"/>
+    </label>
+    <label>
+        <span>Description:</span>
+        <input type="text" name="description" ng-required="true" description-validator ng-model="$ctrl.article.text"/>
+    </label>
+    <label ng-show="addingForm.description.$error.shortDescription" class="form-error">
+        Description must be more then 20 symbols
+    </label>
+    <label>
+        <span>Author:</span>
+        <input type="text" name="author" ng-model="$ctrl.article.author"/>
+    </label>
+    <label>
+        <span>Image url:</span>
+        <input type="text" name="img" ng-model="$ctrl.article.img"/>
+    </label>
+    <button type="button" ng-if="$ctrl.type === 'save'" ng-disabled="addingForm.$invalid" ng-click="$ctrl.saveArticle($ctrl.article)">Add News</button>
+    <button type="button" ng-if="$ctrl.type === 'edit'" ng-disabled="addingForm.$invalid" ng-click="$ctrl.editArticle($ctrl.article)">Update News</button>
+</form>

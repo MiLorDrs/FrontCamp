@@ -8,8 +8,7 @@ let passport = require('passport');
 let passportProcess = require('./libs/passport');
 let expressSession = require('express-session');
 
-let index = require('./routes/index');
-let process = require('./routes/process');
+let api = require('./routes/api');
 let auth = require('./routes/auth');
 
 let app = express();
@@ -35,24 +34,16 @@ app.use(expressSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.all('/user-view', (req, res, next) => {
+app.all(['/admin', '/admin/*'], (req, res, next) => {
     req.isAuthenticated()
         ? next()
         : res.redirect('/');
 });
 
-app.use('/', index);
-app.use('/process', process);
+app.use('/api', api);
 app.use('/auth', auth);
 
-app.get('/', (req, res, next) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-app.get('/user-view', (req, res, next) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
-app.get('/login', (req, res, next) => {
+app.get('/*', (req, res, next) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 

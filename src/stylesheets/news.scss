@@ -2,6 +2,7 @@ body {
     width: 1250px;
     margin: 20px auto;
 }
+
 #content {
     display: inline-block;
     width: 848px;
@@ -57,24 +58,12 @@ body {
     }
 }
 
-form {
+form.center {
     width: 300px;
-    &.delete-form {
-        float: right;
-        width: auto;
-    }
-    &.adding-form {
-        margin: 20px;
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
-    &.auth {
-        margin: 100px auto;
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
+    margin: 100px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 aside {
@@ -82,8 +71,14 @@ aside {
     vertical-align: top;
     a {
         padding: 0 20px;
+        text-decoration: none;
     }
     .user-name {
         padding-left: 20px;
     }
+}
+
+.navigation {
+    margin: 20px auto;
+    width: 112px;
 }
